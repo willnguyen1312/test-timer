@@ -1,16 +1,5 @@
+import { callFuncEachTime } from "./utils";
 import { debounce, throttle } from "./timer";
-
-const callFuncEachTime = async (fn, time, numberOfCall) => {
-  for (let index = 0; index < numberOfCall; index++) {
-    await new Promise((res) => {
-      setTimeout(() => {
-        fn();
-        res();
-      }, time);
-      jest.runOnlyPendingTimers();
-    });
-  }
-};
 
 describe("timer utils", () => {
   it.skip("should work for debounce - lower bound", async () => {
